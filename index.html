@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TONO APROBADO | Colección Completa</title>
+    <title>TONO APROBADO | Colorimetría Profesional</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
@@ -32,89 +32,95 @@
         body.mode-landing { background-color: var(--bg-landing); overflow-x: hidden; }
         body.mode-grid { background-color: var(--bg-grid); color: var(--text-grid); }
 
-        /* --- VISTA 1: LANDING ORGANIZADA --- */
+        /* --- VISTA 1: LANDING CENTRADA --- */
         #landing-view {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
             animation: fadeIn 0.8s ease-out;
         }
 
-        header.landing-header { text-align: center; margin-bottom: 50px; }
+        header.landing-header { text-align: center; margin-bottom: 60px; }
 
         h1.brand-title {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(3rem, 12vw, 6rem);
+            font-size: clamp(3.5rem, 15vw, 7rem);
             color: var(--text-landing);
             text-transform: uppercase;
-            line-height: 0.9;
+            line-height: 0.85;
             margin: 0;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
         }
 
         .brand-subtitle {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(0.8rem, 3vw, 1.2rem);
-            letter-spacing: 6px;
-            color: #888;
-            margin-top: 10px;
+            font-size: clamp(0.7rem, 3vw, 1.1rem);
+            letter-spacing: 8px;
+            color: #666;
+            margin-top: 15px;
             text-transform: uppercase;
         }
 
-        /* Contenedor de Estaciones */
         .seasons-wrapper {
             width: 100%;
-            max-width: 900px;
+            max-width: 800px;
             display: flex;
             flex-direction: column;
-            gap: 50px; /* Separación entre estaciones */
+            gap: 60px;
         }
 
         .season-group {
             width: 100%;
-            border-top: 1px solid var(--border-dark);
-            padding-top: 20px;
+            text-align: center; /* CENTRADO DE TEXTO */
         }
 
         .season-name {
             font-family: 'Syne', sans-serif;
-            color: #666;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            color: var(--text-landing);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            position: relative;
+            display: inline-block;
+        }
+        .season-name::after {
+            content: ""; position: absolute; bottom: -10px; left: 20%; right: 20%;
+            height: 1px; background: var(--accent);
         }
 
         .buttons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            display: flex; /* CAMBIO A FLEX PARA CENTRADO PERFECTO */
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
+            margin-top: 10px;
         }
 
         .menu-btn {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--border-dark);
             color: var(--text-landing);
-            padding: 25px 15px;
+            padding: 20px 30px;
+            min-width: 160px;
             font-family: 'Syne', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            border-radius: 4px;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: 2px;
         }
 
         .menu-btn:hover {
             background: var(--text-landing);
             color: var(--bg-landing);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255,255,255,0.1);
+            border-color: var(--text-landing);
+            transform: translateY(-5px);
         }
 
-        /* --- VISTA 2: GRID DETALLE (Igual que antes) --- */
+        /* --- VISTA 2: GRID DETALLE --- */
         #grid-view {
             display: none;
             max-width: 1100px;
@@ -133,108 +139,56 @@
         }
 
         .back-btn {
-            background: none;
-            border: 1px solid #000;
-            color: #000;
-            padding: 10px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            transition: 0.2s;
+            background: none; border: 1px solid #000; color: #000; padding: 10px 25px;
+            border-radius: 50px; cursor: pointer; font-family: 'Inter', sans-serif;
+            font-weight: 600; font-size: 0.85rem; text-transform: uppercase;
         }
-        .back-btn:hover { background: #000; color: #fff; }
 
         .season-title {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #000;
-            margin: 0;
-            text-align: right;
+            font-family: 'Syne', sans-serif; font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800; text-transform: uppercase; color: #000; margin: 0;
         }
 
         .main-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 60px 0 25px;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
+            font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 1px; margin: 60px 0 25px;
+            color: var(--accent); display: flex; align-items: center;
         }
         .main-title::after { content: ""; flex: 1; height: 1px; background: var(--border-light); margin-left: 20px; }
 
-        .sub-title { 
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem; 
-            color: #888; 
-            margin: 0 0 15px; 
-            font-weight: 600; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .sub-title { font-size: 0.85rem; color: #888; margin: 0 0 15px; font-weight: 600; text-transform: uppercase; }
         
         .subgroup-wrapper { margin-bottom: 40px; }
         .color-flex-grid { display: flex; flex-wrap: wrap; gap: 15px; }
 
         .color-item {
-            width: calc(16.66% - 13px);
-            aspect-ratio: 1;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            width: calc(16.66% - 13px); aspect-ratio: 1; border-radius: 8px;
+            cursor: pointer; transition: transform 0.2s ease;
+            border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .color-item:hover { transform: scale(1.15); z-index: 10; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
 
-        @media (max-width: 800px) {
-            .color-item { width: calc(20% - 12px); }
-        }
-        @media (max-width: 500px) {
-            .color-item { width: calc(25% - 12px); }
-        }
-
         .season-description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #333;
-            margin: 60px 0 20px;
-            padding: 30px;
-            background: #f4f4f4;
-            border-left: 4px solid #1a1a1a;
-            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem; line-height: 1.6; color: #333; margin: 60px 0 20px;
+            padding: 30px; background: #f4f4f4; border-left: 4px solid #1a1a1a; font-family: 'Syne', sans-serif;
         }
 
         /* --- VISOR MODAL --- */
-        .viewer {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100dvh;
-            z-index: 9999; display: none; flex-direction: column;
-        }
+        .viewer { position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; z-index: 9999; display: none; flex-direction: column; }
         .viewer.active { display: flex; }
-        .viewer-bg { position: absolute; inset: 0; transition: background 0.4s ease; }
-        .close-viewer {
-            position: absolute; top: 30px; right: 30px; background: white; border: none;
-            width: 44px; height: 44px; border-radius: 50%; cursor: pointer; z-index: 1001;
-            display: flex; align-items: center; justify-content: center; font-size: 18px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .viewer-footer {
-            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-            background: white; padding: 20px 40px; border-radius: 50px; text-align: center;
-            min-width: 260px; z-index: 1001; box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
+        .viewer-bg { position: absolute; inset: 0; }
+        .close-viewer { position: absolute; top: 30px; right: 30px; background: white; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; z-index: 1001; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .viewer-footer { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); background: white; padding: 20px 40px; border-radius: 50px; text-align: center; min-width: 260px; z-index: 1001; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
         .viewer-footer strong { display: block; font-size: 18px; color: black; font-family: 'Syne', sans-serif; }
         .viewer-footer span { font-size: 14px; color: #888; font-family: 'Inter', sans-serif; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 600px) {
+            .color-item { width: calc(25% - 12px); }
+            .menu-btn { width: 100%; }
+        }
     </style>
 </head>
 <body class="mode-landing">
@@ -242,7 +196,7 @@
     <section id="landing-view">
         <header class="landing-header">
             <h1 class="brand-title">TONO<br>APROBADO</h1>
-            <div class="brand-subtitle">COLORIMETRIAS</div>
+            <div class="brand-subtitle">Selecciona tu Estación</div>
         </header>
 
         <div class="seasons-wrapper">
@@ -253,6 +207,15 @@
                     <button class="menu-btn" onclick="loadSeason('primavera_calida')">Cálida</button>
                     <button class="menu-btn" onclick="loadSeason('primavera_brillante')">Brillante</button>
                     <button class="menu-btn" onclick="loadSeason('primavera_clara')">Clara</button>
+                </div>
+            </div>
+
+            <div class="season-group">
+                <div class="season-name">Verano</div>
+                <div class="buttons-grid">
+                    <button class="menu-btn" onclick="loadSeason('verano_claro')">Claro</button>
+                    <button class="menu-btn" onclick="loadSeason('verano_suave')">Suave</button>
+                    <button class="menu-btn" onclick="loadSeason('verano_frio')">Frío</button>
                 </div>
             </div>
 
@@ -280,7 +243,7 @@
     <section id="grid-view">
         <div class="grid-header">
             <button class="back-btn" onclick="goBack()">← VOLVER</button>
-            <h2 id="current-season-title" class="season-title">Titulo</h2>
+            <h2 id="current-season-title" class="season-title"></h2>
         </div>
         <div id="dynamic-content"></div>
     </section>
@@ -296,103 +259,57 @@
 
     <script>
         const colorData = {
-            // --- PRIMAVERA ---
-            'primavera_calida': {
-                title: "Primavera Cálida",
-                star: "Neutros Claros|#FFF9EB:Warm Ivory,#F2E4CE:Soft Warm Beige,#ECD0B6:Light Sand,#E6C36A:Soft Warm Gold;Amarillos y Dorados|#FED634:Sun Yellow,#F7C948:Warm Butter,#F2B705:Clear Warm Yellow,#EBC14A:Golden Light;Naranjas y Duraznos|#FD8D5D:Soft Coral Orange,#E78646:Warm Apricot,#FFD9C2:Peach Cream,#F59E5D:Light Mandarin;Rojos Cálidos|#FC5603:Bright Orange Red,#F32112:Warm Tomato Red,#F76B5E:Warm Coral Red;Verdes Cálidos|#87A022:Warm Apple Green,#50A34D:Fresh Leaf Green,#A8C686:Warm Pistachio,#59C9B3:Warm Turquoise;Azules Cálidos|#009BA3:Warm Aqua Blue",
-                comp: "Complementarios|#D9FCF6:Light Aqua,#BFE9E4:Soft Aqua Mint,#9DD7DD:Clear Aqua,#84E1CB:Fresh Mint,#6FBFAF:Soft Turquoise,#59C9B3:Turquoise Light,#029270:Warm Teal,#007A8A:Deep Aqua,#004266:Warm Navy,#A8C686:Warm Pistachio,#87A022:Apple Green,#B7D65A:Fresh Lime,#CCD260:Yellow Green,#E3E18B:Light Chartreuse,#FFD9C2:Peach,#F7C4A5:Soft Apricot,#F2B88C:Warm Peach,#E78646:Apricot,#FD8D5D:Soft Orange,#ECD0B6:Sand,#F2E4CE:Warm Beige,#E6C36A:Golden Beige,#C9A46A:Golden Sand,#DEC98B:Light Honey,#F59E5D:Mandarin,#F7C948:Warm Butter,#FED634:Sun Yellow,#F2B705:Clear Yellow,#EBC14A:Golden Yellow,#FFD166:Soft Golden Yellow",
-                avoid: "Fríos / Azulados|#235AE7:Royal Blue,#0E3EAF:Electric Blue,#4B0082:Indigo;Oscuros / Pesados|#000000:Black,#1A1A1A:Ink Black,#343434:Charcoal;Apagados / Terrosos|#8B4513:Warm Brown,#5A4B26:Dark Khaki,#7C852E:Dark Olive",
-                metal: "Recomendados|#FFD700:Yellow Gold,#F0E68C:Light Gold,#DA9100:Warm Gold,#CD7F32:Soft Bronze;Evitar|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#D8D8D8:Chrome",
-                desc: "Los colores cálidos, claros y luminosos realzan tu frescura natural. Cuando el color es cálido, brillante y limpio, tu imagen se ve vital, alegre y naturalmente radiante."
+            // --- VERANO ---
+            'verano_claro': {
+                title: "Verano Claro",
+                star: "Neutros claros fríos|#F5F5F7:Soft Cool White,#E6E6EA:Light Cool Gray,#C8CAD4:Pale Cool Gray,#A8BACD:Light Blue Gray;Rosas suaves fríos|#FFD1E3:Soft Cool Pink,#EED3E3:Powder Rose,#FDE8F5:Light Blush,#D96A8A:Soft Cool Raspberry;Lilacs y violetas claros|#EFE6F7:Soft Lilac,#CFC6EA:Light Lavender,#C6CAEB:Light Periwinkle,#8E7FB8:Soft Violet;Azules claros fríos|#C7D6E6:Pale Blue Gray,#6F8EC1:Light Cool Blue,#CDECF4:Powder Aqua,#B9DDEA:Soft Sky Blue;Verdes fríos suaves|#D4EFE9:Light Aqua Green,#B6E0DA:Cool Mint,#8ECFBC:Soft Teal,#3C9A98:Light Blue Green",
+                comp: "Complementarios|#F5F5F7:Soft Cool White,#E6E6EA:Light Cool Gray,#D5D7DF:Pearl Gray,#C8CAD4:Pale Cool Gray,#A8BACD:Blue Gray,#FFF1B8:Cool Light Yellow,#FFECA8:Light Lemon,#FFD1E3:Soft Pink,#F0D8E8:Powder Rose,#FDE8F5:Light Blush,#E6C6DA:Soft Mauve,#D7B4CE:Cool Mauve Pink,#EFE6F7:Soft Lilac,#EADDF3:Light Lilac,#CFC6EA:Lavender Light,#C6CAEB:Periwinkle,#B8C0E6:Cool Pastel Blue,#CDECF4:Powder Aqua,#B9DDEA:Sky Blue,#AFCFE0:Misty Blue,#D4EFE9:Aqua Green Light,#B6E0DA:Cool Mint,#9FD3C9:Soft Aqua,#8ECFBC:Light Teal,#7FBEB5:Muted Aqua,#E9EFF3:Ice Blue Gray,#D7E4EE:Icy Blue,#C9D9E4:Cool Fog Blue,#BFD0DC:Cool Mist,#F2F2F4:Icy Neutral",
+                avoid: "Cálidos / Amarillentos|#FF8C00:Orange,#FFD634:Warm Yellow,#C1672F:Camel;Oscuros / Pesados|#000000:Black,#1A1A1A:Ink Black;Muy saturados|#FF0000:True Red,#EB19B3:Hot Fuchsia,#00FF00:Neon Green",
+                metal: "Recomendados|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#A9A9A9:Soft Pewter;Evitar|#FFD700:Yellow Gold,#B87333:Copper,#CD7F32:Bronze,#B76E79:Rose Gold",
+                desc: "Colores claros, fríos y delicados iluminan tu imagen natural. Cuando el color es liviano y fresco, tu presencia se ve etérea y armónica."
             },
-            'primavera_brillante': {
-                title: "Primavera Brillante",
-                star: "Neutros Luminosos|#FFF6E0:Light Warm Ivory,#F6E3C5:Bright Sand,#EFCC8F:Golden Beige,#FBD8C1:Peach Cream;Amarillos|#FFE45C:Bright Lemon,#FFE600:Sun Yellow,#FFD23F:Clear Golden Yellow;Azules y Turquesas|#84DDEB:Bright Aqua,#4FC8DE:Clear Turquoise,#149FD2:Bright Sky Blue,#007FA3:Warm Bright Teal;Verdes|#83C65D:Apple Green,#00993B:Clear Green,#9CDE9F:Bright Mint,#B1FF85:Bright Lime,#058A7F:Bright Teal Green;Rojos y Corales|#FF5E29:Bright Orange Coral,#F11E2F:Bright Warm Red,#EF6262:Bright Coral Red,#FF4C88:Bright Warm Pink",
-                comp: "Complementarios|#E2FDF6:Bright Mint Ice,#BFF4EA:Clear Aqua Mint,#84DDEB:Bright Aqua,#4FC8DE:Turquoise Bright,#149FD2:Sky Blue,#009BA3:Warm Aqua Blue,#007FA3:Clear Teal,#058A7F:Teal Green,#2FB9A7:Bright Sea Green,#9CDE9F:Mint Green,#83C65D:Fresh Apple,#B1FF85:Bright Lime,#C9F27E:Clear Yellow Green,#50A34D:Bright Leaf Green,#FFE600:Sun Yellow,#FFE45C:Lemon,#FFD23F:Golden Yellow,#F7C948:Warm Butter,#FF5E29:Orange Coral,#F76B5E:Warm Coral,#EF6262:Bright Coral Red,#FF8A5B:Bright Peach Coral,#FF4C88:Warm Pink,#FF6FAE:Bright Rose,#F11E2F:Warm Red,#FBD8C1:Peach,#F6E3C5:Bright Sand,#EFCC8F:Golden Beige,#FFE9C7:Light Warm Cream,#FFD9A3:Soft Golden Cream",
-                avoid: "Fríos / Azulados|#235AE7:Royal Blue,#0E3EAF:Electric Blue,#4B0082:Indigo;Oscuros / Pesados|#000000:Black,#1A1A1A:Ink Black,#2F2F2F:Charcoal;Apagados / Terrosos|#8B4513:Brown,#5A4B26:Dark Khaki,#7C852E:Dark Olive",
-                metal: "Recomendados|#FFD700:Yellow Gold,#F1E5AC:Light Gold,#FFC125:Polished Gold,#B5A642:Warm Brass;Evitar|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#444444:Dark Metals",
-                desc: "Colores brillantes, cálidos y limpios reflejan tu energía natural. Cuando el color es claro, vibrante y luminoso, tu imagen se vuelve fresca, poderosa y magnética."
+            'verano_suave': {
+                title: "Verano Suave",
+                star: "Neutros fríos suaves|#E3E8EC:Soft Cool White,#C4C6CC:Cool Soft Gray,#8A8A8F:Muted Cool Gray,#CFD2E3:Soft Blue Gray;Rosas empolvados|#EFE1E2:Powder Blush,#E3A9BC:Soft Dusty Rose,#C36581:Muted Rose,#C85C7A:Soft Cool Raspberry;Malvas y violetas suaves|#E0C9DC:Soft Mauve,#BFB9D4:Dusty Lilac,#A68EBE:Muted Lavender,#7A5C97:Soft Plum;Azules fríos apagados|#D3DEEA:Powder Blue,#7F92AA:Soft Denim,#5F93AA:Muted Blue,#44495F:Cool Soft Navy;Verdes fríos grisados|#C2DEDE:Soft Aqua,#A8BEB7:Sage Green,#4E7472:Muted Teal,#2F5752:Soft Deep Green",
+                comp: "Complementarios|#E3E8EC:Soft Cool White,#D3D7DE:Cool Mist Gray,#C4C6CC:Soft Gray,#AFAFB5:Muted Cool Gray,#8A8A8F:Medium Cool Gray,#EEE3AA:Soft Cool Yellow,#D8C7B6:Muted Oat,#EFE1E2:Powder Blush,#E3A9BC:Soft Rose,#C36581:Rose Dust,#B26A8B:Muted Berry,#E0C9DC:Soft Mauve,#DABED7:Mauve Gray,#BFB9D4:Lilac Gray,#A68EBE:Muted Lavender,#9B87B4:Soft Violet,#D3DEEA:Powder Blue,#CBDDEC:Soft Blue Gray,#7F92AA:Denim Soft,#5F93AA:Muted Blue,#C2DEDE:Aqua Soft,#AED5D5:Cool Aqua,#A8BEB7:Sage,#8FA9A3:Muted Sage,#6E8F8B:Cool Moss,#4E7472:Muted Teal,#3E6564:Soft Teal,#2F5752:Deep Soft Green,#B7BFD0:Cool Fog,#E9EDF1:Icy Neutral",
+                avoid: "Cálidos / Dorados|#FF8C00:Orange,#FFD634:Warm Yellow,#C1672F:Camel;Muy oscuros|#000000:Black,#1A1A1A:Ink Black;Muy saturados|#FF0000:True Red,#EB19B3:Hot Fuchsia,#00FF00:Neon Green",
+                metal: "Recomendados|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#A9A9A9:Soft Pewter;Evitar|#FFD700:Yellow Gold,#B87333:Copper,#CD7F32:Bronze,#B76E79:Rose Gold",
+                desc: "Los colores suaves, fríos y empolvados acompañan tu elegancia natural. Cuando el color es bajo en contraste y delicado, tu imagen se ve serena y sofisticada."
             },
-            'primavera_clara': {
-                title: "Primavera Clara",
-                star: "Neutros Claros|#FFF6E0:Light Warm Ivory,#F2E1C8:Light Warm Beige,#FFE5D1:Soft Peach Cream,#FFD8BD:Light Apricot;Amarillos Suaves|#F8E077:Soft Sun Yellow,#FFE2A8:Light Golden Yellow;Azules Claros|#AEE8EF:Light Aqua,#8BBCE4:Soft Sky Blue,#72BFCB:Clear Light Teal,#5F86B3:Light Warm Blue;Verdes Claros|#9FF4D5:Fresh Mint,#9DE1BE:Light Aqua Green,#77C9A5:Soft Spring Teal,#8FCB8B:Light Leaf Green,#E5FEE1:Light Pistachio,#C9E49B:Soft Lime Green;Corales y Rosados|#FF9D94:Soft Coral,#FFB3A7:Light Peach Coral,#FFAB9E:Peach Pink,#F3A6A0:Soft Warm Rose",
-                comp: "Complementarios|#DBFFF4:Light Mint Ice,#CAE8DE:Soft Aqua Gray,#AEE8EF:Light Aqua,#8BBCE4:Soft Sky Blue,#72BFCB:Light Teal,#9DE1BE:Aqua Green Light,#9FF4D5:Fresh Mint,#BFE6C8:Light Mint Green,#8FCB8B:Soft Leaf Green,#A3D9A5:Spring Green Light,#E5FEE1:Light Pistachio,#C9E49B:Soft Lime,#EAF4C8:Light Yellow Green,#F8E077:Soft Sun Yellow,#FFE2A8:Light Golden Yellow,#FFD8BD:Light Apricot,#FFE5D1:Peach Cream,#F8D2C8:Soft Peach Blush,#FFB3A7:Light Coral,#FF9D94:Soft Coral,#F3A6A0:Warm Rose,#FFAB9E:Peach Pink,#F6C1A8:Light Warm Blush,#FFF1DC:Warm Light Cream,#F2E1C8:Light Beige,#EAD7BF:Soft Sand,#D7E8CF:Soft Spring Neutral,#CFE6DC:Light Aqua Neutral,#E8F1E6:Very Light Spring Green,#F7F3E6:Warm Light Off-White",
-                avoid: "Fríos / Azulados|#0E3EAF:Electric Blue,#235AE7:Royal Blue,#4B0082:Indigo;Oscuros / Contrastados|#000000:Black,#1A1A1A:Ink Black,#343434:Charcoal;Muy Intensos|#FF0000:True Red,#FFE100:Bright Yellow,#EB19B3:Hot Fuchsia",
-                metal: "Recomendados|#F7E7CE:Light Yellow Gold,#E6CFA0:Soft Gold,#F7E7CE:Champagne Gold,#CD7F32:Brushed Bronze;Evitar|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#333333:Dark Metals",
-                desc: "Colores claros, cálidos y luminosos acompañan tu frescura natural. Cuando el color es suave, ligero y claro, tu imagen se ve radiante, delicada y armónica."
-            },
-
-            // --- OTOÑO (Datos Previos) ---
-            'otono_calido': {
-                title: "Otoño Cálido",
-                star: "Colores Estrella|#4C1C06:Dark Chocolate,#5A3A1A:Warm Espresso,#A8854D:Warm Camel,#9D5439:Warm Cinnamon,#FFF6E0:Cream,#F4DBA4:Warm Sand,#F2C673:Golden Honey,#DD9F3C:Deep Gold,#ED7226:Burnt Orange,#E23D28:Warm Red Orange,#C84D37:Rust,#C1672F:Terracotta,#7C852E:Olive Green,#5A5E31:Moss Green,#2F3805:Deep Olive,#6B8E23:Warm Olive,#AD5F25:Copper Brown,#802E23:Brick Red,#9A3E1F:Warm Chestnut,#6B2E1A:Mahogany",
-                comp: "Complementarios|#F3CBA5:Peach Beige,#E8B07A:Warm Apricot,#E6C089:Soft Gold,#D8A15A:Golden Tan,#B98C4A:Warm Taupe,#AFDC8F:Soft Olive,#CCD260:Yellow Olive,#8A9A3A:Olive Chartreuse,#6F7F3A:Lichen Green,#556B2F:Dark Olive,#165D69:Warm Teal,#1F6F78:Petrol Teal,#2F7F7A:Muted Turquoise,#B86A3A:Clay,#D2691E:Cinnamon,#A0522D:Sienna,#8B4513:Saddle Brown,#C68642:Warm Caramel,#9C6B30:Bronze,#B87333:Copper,#A97142:Warm Leather,#8F6A3D:Earth Brown,#E1B382:Golden Beige,#D2A679:Warm Almond,#C9A14A:Antique Gold,#7A5C2E:Warm Khaki,#6B4F1D:Dark Mustard,#7F7F2A:Olive Yellow,#A65E2E:Burnt Copper,#8C3F1E:Deep Terracotta",
-                avoid: "Cool / Blue-based|#2299B4:Cool Blue,#23908A:Cool Turquoise,#101832:Cold Navy,#1A2A70:Midnight Blue;Cool Pastels|#FFEBF3:Icy Pink,#E6E6FA:Lavender,#D5F4F6:Icy Aqua;Extreme Contrast|#000000:Black,#FFFFFF:Pure White,#B8B8B8:Cool Gray",
-                metal: "Recomendados|#FFD700:Yellow Gold,#CD7F32:Bronze,#B87333:Copper,#CFB53B:Antique Gold;Evitar|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#D8D8D8:Chrome",
-                desc: "Los colores cálidos, terrosos y dorados armonizan con tu piel. Cuando el color es cálido y profundo, tu imagen se ve natural y luminosa."
-            },
-            'otono_suave': {
-                title: "Otoño Suave",
-                star: "Neutros cálidos|#FFF6E0:Soft Cream,#CFC2A8:Warm Sand,#B6A081:Warm Taupe,#9C8F7A:Soft Stone;Dorados apagados|#F0C775:Soft Gold,#E8B97A:Muted Honey,#F5D2BD:Peach Beige,#D9B48F:Soft Camel;Naranjas suaves|#F38953:Muted Orange,#E26D69:Soft Coral,#C46540:Warm Clay,#A46A4A:Soft Rust;Verdes cálidos|#A9B573:Light Olive,#8FA58A:Soft Sage,#748952:Muted Olive,#6F8F7A:Soft Moss;Rojos terrosos|#C26A5A:Soft Terracotta,#B97A6A:Dusty Warm Rose,#9C6B55:Warm Rose Brown,#8A5A46:Soft Brick Brown",
-                comp: "Complementarios|#D4E0B3:Soft Pistachio,#C9D8C3:Muted Celadon,#A5D9C9:Soft Aqua,#8FC2B8:Muted Seafoam,#72B69F:Soft Green Teal,#67B2BC:Soft Blue Teal,#7CA5CB:Muted Blue,#6E8FA8:Dusty Blue,#5F7F7A:Blue Green Gray,#6F7F6A:Muted Green Gray,#B3B8A3:Sage Gray,#919D7B:Soft Moss Gray,#A9B573:Olive Light,#8E9B6C:Muted Olive,#7F8A63:Dry Olive,#E8C9B8:Soft Blush,#EFA195:Muted Peach,#D8A79A:Dusty Peach,#C5B1A2:Warm Stone,#A58C7A:Soft Camel,#C09E87:Beige Rose,#B89A88:Warm Nude,#9E7A6A:Dusty Warm Rose,#8F7B66:Warm Mushroom,#7A6656:Soft Bark,#B6A081:Warm Taupe,#9C8F7A:Soft Taupe Gray,#8A8174:Muted Taupe,#A49B8A:Warm Greige,#D6CCBB:Soft Linen",
-                avoid: "Fríos / contrastados|#000000:Black,#FFFFFF:Pure White,#235AE7:Royal Blue,#0E3EAF:Electric Blue;Muy intensos|#FF0000:True Red,#FFE100:Bright Yellow,#EB19B3:Hot Fuchsia;Rosados fríos|#FFEBF3:Icy Pink,#E6E6FA:Lavender",
-                metal: "Recomendados|#FFD700:Yellow Gold,#CFB53B:Antique Gold,#CD7F32:Bronze,#B87333:Brushed Copper;Evitar|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#D8D8D8:High-shine Chrome",
-                desc: "Los colores cálidos, suaves y apagados armonizan con tu delicadeza natural. Cuando el color es sutil, cálido y de baja saturación, tu imagen se ve equilibrada y elegante."
-            },
-            'otono_fuerte': {
-                title: "Otoño Fuerte",
-                star: "Colores Estrella|#511C06:Dark Chocolate,#4C1C06:Espresso Brown,#343D0A:Deep Olive Brown,#5A4B26:Dark Khaki,#E67D37:Burnt Orange,#DD9F3C:Antique Gold,#C08D35:Deep Mustard,#BD7951:Copper Tan,#830C18:Warm Oxblood,#C81E2C:Brick Red,#802E23:Brick Brown,#9D5439:Cinnamon Brown,#24562A:Deep Forest Green,#536F2A:Olive Green,#71774B:Moss Olive,#8D9E47:Lichen Green,#6B2E1A:Mahogany,#802359:Warm Burgundy,#7A3A1D:Dark Rust,#3B1F12:Deep Cocoa",
-                comp: "Complementarios|#FFF6E0:Warm Cream,#EABBA4:Soft Peach,#F2C673:Golden Honey,#E6B566:Soft Gold,#D8A15A:Warm Tan,#AD5F25:Copper Brown,#C1672F:Terracotta,#B87333:True Copper,#A0522D:Sienna,#8B4513:Saddle Brown,#9A3E1F:Warm Chestnut,#B86A3A:Clay,#6F4E37:Coffee,#7F5A2E:Earth Gold,#7C852E:Olive,#8F8B3C:Warm Olive,#556B2F:Dark Olive,#6B7A2E:Olive Moss,#2B7866:Warm Teal,#165D69:Deep Warm Teal,#125E6D:Blue-Green Teal,#007A8A:Dark Teal,#AFDC8F:Soft Warm Green,#CCD260:Yellow Olive,#9CAF6B:Muted Olive Green,#A97142:Warm Leather,#8F6A3D:Earth Brown,#6E512E:Dark Earth,#B07C2E:Antique Bronze,#8C5A2B:Burnt Bronze",
-                avoid: "Cool / Blue-based|#229DBF:Cool Blue,#184668:Cold Navy,#0079AD:Bright Cold Blue,#235AE7:Royal Blue;Pastels / Soft|#FFEBF3:Icy Pink,#E6E6FA:Lavender,#D5F4F6:Icy Aqua;Extreme Contrast|#000000:Pure Black,#FFFFFF:Pure White,#B8B8B8:Cool Gray",
-                metal: "Recomendados|#FFD700:Yellow Gold,#CFB53B:Antique Gold,#CD7F32:Bronze,#B87333:Copper;Evitar|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#D8D8D8:Chrome",
-                desc: "Colores cálidos, profundos y terrosos acompañan la intensidad natural de tu piel. Cuando el color es rico y oscuro, tu imagen se ve fuerte y sofisticada."
+            'verano_frio': {
+                title: "Verano Frío",
+                star: "Neutros fríos claros|#F2F2F2:Cool Soft White,#E1E1E6:Light Cool Gray,#9AA0B2:Cool Taupe Gray,#4A4E57:Soft Charcoal;Rosas fríos empolvados|#F6E6EF:Cool Blush,#EBC1D6:Powder Pink,#C98AAE:Dusty Rose,#B24C6F:Cool Raspberry;Lilacs y violetas fríos|#E2DAF2:Soft Lavender,#B9A9DE:Cool Lilac,#8A76B8:Muted Violet,#5E507F:Cool Plum;Azules fríos suaves|#D8E4F2:Powder Blue,#B7C6EA:Cool Periwinkle,#7FA9C9:Soft Denim Blue,#3B5B86:Cool Navy;Verdes fríos apagados|#C6D9DC:Blue Sage,#9CCFC2:Cool Mint,#7A9FA8:Muted Teal,#3C7F80:Cool Blue Green",
+                comp: "Complementarios|#F2F2F2:Soft Cool White,#E1E1E6:Light Cool Gray,#C7CBD6:Cool Pearl Gray,#9AA0B2:Taupe Gray,#BFC6D9:Blue Gray,#F6E6EF:Cool Blush,#EBC1D6:Powder Pink,#D9A1BF:Soft Rose,#C98AAE:Dusty Rose,#B24C6F:Cool Raspberry,#E2DAF2:Soft Lavender,#CFC4EA:Icy Lilac,#B9A9DE:Cool Lilac,#9A8BC7:Muted Violet,#8A76B8:Soft Violet,#D8E4F2:Powder Blue,#C4D3EB:Soft Sky Blue,#B7C6EA:Periwinkle,#9FB7D6:Misty Blue,#7FA9C9:Soft Denim,#C6D9DC:Blue Sage,#B1D2CF:Cool Aqua Gray,#9CCFC2:Cool Mint,#8BB9B4:Muted Aqua,#7A9FA8:Teal Gray,#DDE6E8:Ice Blue Gray,#CAD6DA:Cool Fog,#B5C3C8:Cool Stone,#A9B2C8:Cool Mist,#E6EBF0:Icy Neutral",
+                avoid: "Cálidos / Amarillentos|#FF8C00:Orange,#FFD634:Warm Yellow,#C19A6B:Camel;Muy oscuros|#000000:Pure Black,#1A1A1A:Ink Black;Muy saturados|#FF0000:True Red,#00FF00:Neon Green,#00A7D1:Electric Turquoise",
+                metal: "Recomendados|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#A9A9A9:Rhodium;Evitar|#FFD700:Yellow Gold,#B87333:Copper,#CD7F32:Bronze,#B76E79:Rose Gold",
+                desc: "Colores fríos, suaves y equilibrados acompañan tu elegancia natural. Cuando el color es delicado, frío y armonioso, tu imagen se ve refinada y serena."
             },
 
-            // --- INVIERNO (Datos Previos) ---
-            'invierno_brillante': {
-                title: "Invierno Brillante",
-                star: "Neutros|#000000:Black,#1A1A1A:Ink Black,#2B2B2B:Jet Gray,#FCFCFD:Icy White;Azules|#235AE7:Bright Royal Blue,#0079AD:Cold Blue,#00A7D1:Electric Cyan,#293885:Bright Navy;Verdes|#10BCA8:Bright Turquoise,#027E71:Cold Teal,#006F6B:Bright Cold Teal;Rojos y Rosas|#E90137:True Cold Red,#BD002C:Crimson,#E63789:Bright Fuchsia,#BB1B81:Hot Pink;Amarillos|#FFE70F:Icy Lemon Yellow,#F5FF00:Neon Icy Yellow;Púrpuras|#780D61:Bright Berry,#5B2EFF:Electric Violet;Gris|#636363:Cold Graphite",
-                comp: "Complementarios|#D5F4F6:Icy Aqua,#CEF2E8:Frozen Mint,#FFEBEF:Icy Pink,#E3CFF2:Bright Lavender,#B8B8B8:Cool Light Gray,#8F8F8F:Steel Gray,#4A4A4A:Cool Charcoal,#2F2F2F:Graphite,#126473:Deep Cold Blue,#1D3F34:Dark Teal Green,#003366:Prussian Blue,#1A1A2E:Ink Blue,#0047AB:Cobalt Blue,#007FFF:Azure,#00BFFF:Deep Sky Blue,#00CFFF:Electric Sky,#00FFD5:Neon Aqua,#00FF6A:Bright Cold Green,#FF0055:Hot Red Pink,#FF2FB3:Electric Pink,#C800FF:Neon Purple,#8A2EFF:Bright Violet,#3A00FF:Blue Violet,#0057FF:Cold Electric Blue,#00E5FF:Ice Cyan,#6A00FF:Bright Indigo,#A100FF:Electric Grape,#0096FF:Arctic Blue,#00FFC8:Ice Mint Neon,#5F5F5F:Cold Mid Gray",
-                avoid: "Cálidos / Terrosos|#FEEE86:Warm Yellow,#D2B48C:Tan,#C19A6B:Camel,#8B4513:Warm Brown,#B87333:Copper;Suaves|#FFEBEF:Dusty Pink,#C8A2C8:Mauve,#D8BFD8:Dusty Lilac,#A9A9A9:Soft Gray;Otoñales|#808000:Olive,#A0522D:Sienna,#CD853F:Peru",
-                metal: "Recomendados|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#D8D8D8:Chrome / Steel;Evitar|#FFD700:Yellow Gold,#B76E79:Rose Gold,#CD7F32:Bronze,#B87333:Copper",
-                desc: "Colores fríos, brillantes y de alto contraste potencian tu energía natural. Cuanto más limpio y vibrante el color, más impacto tiene tu imagen."
-            },
-            'invierno_profundo': {
-                title: "Invierno Profundo",
-                star: "Neutros y Azules|#000000:Black,#1A1A1A:Ink Black,#232323:Jet Black,#1F2A44:Deep Navy,#1A2A70:Midnight Blue,#0E3EAF:Electric Deep Blue,#215C9C:Royal Cold Blue,#232748:Night Blue;Verdes|#02585A:Deep Teal,#0E3F34:Petrol Green,#0A5F4A:Deep Cold Emerald;Rojos y Púrpuras|#C10114:Cold Red,#923551:Burgundy,#5C1445:Plum Wine,#7B003F:Dark Raspberry,#9125AD:Intense Violet,#52336C:Royal Purple,#2B003F:Deep Aubergine;Grises|#525252:Charcoal Gray,#2F2F2F:Graphite",
-                comp: "Complementarios|#FCFCFD:Icy White,#E6E6E6:Cool Light Gray,#B5B5B5:Steel Gray,#808080:Medium Gray,#4A4A4A:Cool Charcoal,#003366:Prussian Blue,#002B5C:Deep Navy Ink,#003B8E:Cold Cobalt,#00416A:Midnight Ocean,#0B2C4A:Dark Steel Blue,#006B6B:Deep Cyan,#004F4F:Dark Teal,#003300:Pine Green,#004225:Deep Forest Green,#1F4E3D:Dark Jade,#66001A:Oxblood,#7A003C:Dark Berry,#990033:Raspberry Wine,#4B0014:Deep Wine Red,#800080:Cold Purple,#6A0DAD:Royal Violet,#4B0082:Indigo,#3B003B:Dark Magenta,#2C003E:Shadow Purple,#1A1A2E:Ink Blue,#2B2E4A:Blue Charcoal,#36454F:Gunmetal,#1F1F1F:Deep Graphite,#0F172A:Cold Night Blue,#003153:Dark Sapphire",
-                avoid: "Cálidos / Terrosos|#FFE100:Warm Yellow,#FFD700:Gold Yellow,#C19A6B:Camel,#D2B48C:Tan,#8B4513:Warm Brown,#B87333:Copper;Pasteles|#FFD1DC:Baby Pink,#FFE4B5:Peach,#F5DEB3:Wheat,#E6E6FA:Lavender,#FFFACD:Pale Yellow;Apagados|#B0AFAF:Warm Gray,#A9A9A9:Soft Gray,#C8A2C8:Mauve,#D8BFD8:Dusty Lilac",
-                metal: "Recomendados|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#D8D8D8:Cool Steel;Evitar|#FFD700:Yellow Gold,#B76E79:Rose Gold,#CD7F32:Bronze,#B87333:Copper",
-                desc: "Colores profundos, fríos e intensos reflejan tu fuerza natural. Cuanto más oscuro y definido el color, más poderosa se vuelve tu imagen."
-            },
-            'invierno_frio': {
-                title: "Invierno Frío",
-                star: "Neutros y Azules|#000000:Black,#1A1A1A:Ink Black,#2F2F2F:Graphite,#FCFCFD:Pure Icy White,#011B51:Deep Cold Navy,#003366:Prussian Blue,#24469E:True Cold Blue,#003B8E:Cold Cobalt;Verdes|#00696B:Cold Teal,#0B4F6C:Blue Teal,#14382F:Deep Cool Green;Rojos y Púrpuras|#C41776:Cool Raspberry,#800A6C:Cool Magenta,#EB19B3:Cool Fuchsia,#7A003C:Cool Berry,#563286:Cold Purple,#5B3FA3:True Cool Violet,#7A5DC7:Cool Periwinkle;Grises|#808080:Neutral Cool Gray,#636363:Steel Gray",
-                comp: "Complementarios|#CBD6F6:Icy Blue,#BECBDA:Cool Blue Gray,#CFCFCF:Cool Light Gray,#E6E6E6:Silver Mist,#9C9C9C:Cold Medium Gray,#E9DEF2:Icy Lavender,#DAD4F7:Cool Lilac Ice,#9A6CB2:Cool Lilac,#8B5FBF:Cool Purple,#6E2F8A:Cool Berry,#FFEBF3:Icy Pink,#E864BE:Cool Pink,#D94C9A:Cool Rose,#DEF2E7:Icy Mint,#C5D8CB:Cool Mint Gray,#A8CFC7:Soft Cool Aqua,#0D93AB:Cold Turquoise,#007C91:Cool Cyan,#1F4E79:Cold Blue Steel,#274C77:Cold Denim,#293885:Cool Navy,#1A1A2E:Ink Blue,#3B4C99:Steel Blue,#4A5FA7:Cool Cornflower,#36454F:Gunmetal,#4A4A4A:Cool Charcoal,#B5B5B5:Cool Silver Gray,#5F7CA3:Cool Slate Blue,#6B6FD6:Cool Blue Violet,#8FA3D8:Icy Periwinkle",
-                avoid: "Cálidos / Amarillos|#F7F592:Warm Yellow,#FBF846:Bright Warm Yellow,#FFE100:Yellow,#FFD700:Gold Yellow;Rojos Cálidos|#C21300:Warm Red,#FF6F3C:Orange Red;Suaves|#C5B4A0:Warm Taupe,#C8A2C8:Mauve,#D8BFD8:Dusty Lilac,#A9A9A9:Warm Soft Gray;Terrosos|#C19A6B:Camel,#8B4513:Warm Brown",
-                metal: "Recomendados|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#D8D8D8:Cool Steel;Evitar|#FFD700:Yellow Gold,#B76E79:Rose Gold,#CD7F32:Bronze,#B87333:Copper",
-                desc: "Los colores fríos, puros y equilibrados armonizan con tu piel. Cuando el color es frío y limpio, tu imagen se ve clara y sofisticada."
-            }
+            // --- OTROS DATOS (PRIMAVERA, OTOÑO, INVIERNO) ---
+            'primavera_calida': { title: "Primavera Cálida", star: "Neutros|#FFF9EB:Warm Ivory,#F2E4CE:Soft Warm Beige,#ECD0B6:Light Sand;Amarillos|#FED634:Sun Yellow,#F7C948:Warm Butter,#F2B705:Clear Warm Yellow;Naranjas|#FD8D5D:Soft Coral Orange,#E78646:Warm Apricot,#FFD9C2:Peach Cream;Verdes|#87A022:Warm Apple Green,#50A34D:Fresh Leaf Green,#A8C686:Warm Pistachio", comp: "Complementarios|#D9FCF6:Light Aqua,#BFE9E4:Soft Aqua Mint,#9DD7DD:Clear Aqua,#84E1CB:Fresh Mint,#029270:Warm Teal", avoid: "Fríos|#235AE7:Royal Blue,#0E3EAF:Electric Blue;Oscuros|#000000:Black,#343434:Charcoal", metal: "Recomendados|#FFD700:Gold,#F0E68C:Light Gold;Evitar|#C0C0C0:Silver", desc: "Los colores cálidos, claros y luminosos realzan tu frescura natural." },
+            'primavera_brillante': { title: "Primavera Brillante", star: "Neutros|#FFF6E0:Light Ivory,#F6E3C5:Bright Sand;Amarillos|#FFE45C:Bright Lemon,#FFE600:Sun Yellow;Azules|#84DDEB:Bright Aqua,#4FC8DE:Clear Turquoise;Rojos|#FF5E29:Orange Coral,#F11E2F:Warm Red", comp: "Complementarios|#E2FDF6:Mint Ice,#149FD2:Sky Blue,#B1FF85:Lime", avoid: "Fríos|#235AE7:Royal Blue;Oscuros|#000000:Black", metal: "Recomendados|#FFD700:Gold;Evitar|#C0C0C0:Silver", desc: "Colores brillantes, cálidos y limpios reflejan tu energía natural." },
+            'primavera_clara': { title: "Primavera Clara", star: "Neutros|#FFF6E0:Light Ivory,#F2E1C8:Light Beige;Azules|#AEE8EF:Light Aqua,#8BBCE4:Soft Sky Blue;Verdes|#9FF4D5:Fresh Mint,#C9E49B:Soft Lime;Rosas|#FF9D94:Soft Coral,#F3A6A0:Warm Rose", comp: "Complementarios|#DBFFF4:Mint Ice,#F8E077:Sun Yellow", avoid: "Fríos|#0E3EAF:Electric Blue;Oscuros|#000000:Black", metal: "Recomendados|#F7E7CE:Champagne Gold;Evitar|#C0C0C0:Silver", desc: "Colores claros, cálidos y luminosos acompañan tu frescura natural." },
+            'otono_calido': { title: "Otoño Cálido", star: "Cafés|#4C1C06:Chocolate,#5A3A1A:Espresso;Dorados|#DD9F3C:Deep Gold,#F2C673:Honey;Naranjas|#ED7226:Burnt Orange,#C84D37:Rust;Verdes|#7C852E:Olive,#2F3805:Deep Olive", comp: "Complementarios|#F3CBA5:Peach,#165D69:Warm Teal", avoid: "Fríos|#2299B4:Cool Blue;Contraste|#000000:Black", metal: "Recomendados|#FFD700:Gold,#CD7F32:Bronze;Evitar|#C0C0C0:Silver", desc: "Los colores cálidos, terrosos y dorados armonizan con tu piel." },
+            'otono_suave': { title: "Otoño Suave", star: "Neutros|#FFF6E0:Soft Cream,#B6A081:Warm Taupe;Dorados|#F0C775:Soft Gold;Verdes|#A9B573:Light Olive,#748952:Muted Olive;Rojos|#C26A5A:Soft Terracotta", comp: "Complementarios|#A5D9C9:Soft Aqua,#6E8FA8:Dusty Blue", avoid: "Intensos|#FF0000:True Red;Fríos|#000000:Black", metal: "Recomendados|#CFB53B:Antique Gold;Evitar|#C0C0C0:Silver", desc: "Los colores cálidos, suaves y apagados armonizan con tu delicadeza." },
+            'otono_fuerte': { title: "Otoño Fuerte", star: "Cafés|#511C06:Dark Chocolate;Dorados|#DD9F3C:Antique Gold;Rojos|#830C18:Warm Oxblood;Verdes|#24562A:Forest Green", comp: "Complementarios|#2B7866:Warm Teal,#AFDC8F:Soft Green", avoid: "Fríos|#229DBF:Cool Blue;Pasteles|#E6E6FA:Lavender", metal: "Recomendados|#FFD700:Gold,#B87333:Copper;Evitar|#C0C0C0:Silver", desc: "Colores cálidos, profundos y terrosos acompañan tu intensidad." },
+            'invierno_brillante': { title: "Invierno Brillante", star: "Neutros|#000000:Black,#FCFCFD:Icy White;Azules|#235AE7:Bright Royal Blue;Rojos|#E90137:True Cold Red,#E63789:Bright Fuchsia;Amarillos|#F5FF00:Neon Icy Yellow", comp: "Complementarios|#00FFD5:Neon Aqua,#C800FF:Neon Purple", avoid: "Cálidos|#FEEE86:Warm Yellow,#8B4513:Brown", metal: "Recomendados|#C0C0C0:Silver;Evitar|#FFD700:Gold", desc: "Colores fríos, brillantes y de alto contraste potencian tu energía." },
+            'invierno_profundo': { title: "Invierno Profundo", star: "Neutros|#000000:Black,#1F2A44:Deep Navy;Verdes|#02585A:Deep Teal;Rojos|#C10114:Cold Red,#923551:Burgundy;Púrpuras|#52336C:Royal Purple", comp: "Complementarios|#003153:Dark Sapphire,#66001A:Oxblood", avoid: "Cálidos|#FFE100:Warm Yellow,#C19A6B:Camel", metal: "Recomendados|#C0C0C0:Silver;Evitar|#FFD700:Gold", desc: "Colores profundos, fríos e intensos reflejan tu fuerza natural." },
+            'invierno_frio': { title: "Invierno Frío", star: "Neutros|#000000:Black,#FCFCFD:Icy White;Azules|#003366:Prussian Blue,#24469E:True Cold Blue;Rojos|#C41776:Cool Raspberry,#EB19B3:Cool Fuchsia", comp: "Complementarios|#1F4E79:Blue Steel,#6B6FD6:Blue Violet", avoid: "Cálidos|#F7F592:Warm Yellow,#C19A6B:Camel", metal: "Recomendados|#C0C0C0:Silver;Evitar|#FFD700:Gold", desc: "Los colores fríos, puros y equilibrados armonizan con tu piel." }
         };
 
         function loadSeason(key) {
             const data = colorData[key];
             if (!data) return;
-
-            document.body.classList.remove('mode-landing');
-            document.body.classList.add('mode-grid');
+            document.body.className = 'mode-grid';
             document.getElementById('landing-view').style.display = 'none';
             document.getElementById('grid-view').style.display = 'block';
-
             document.getElementById('current-season-title').innerText = data.title;
             const container = document.getElementById('dynamic-content');
             container.innerHTML = '';
-
             renderSection(container, "⭐ Colores Estrella", data.star);
             renderSection(container, "🎨 Complementarios", data.comp);
             renderSection(container, "🚫 A Evitar", data.avoid);
             renderSection(container, "💎 Joyería y Metales", data.metal);
-
             if (data.desc) {
                 const finalDesc = document.createElement('p');
                 finalDesc.className = 'season-description';
@@ -403,38 +320,30 @@
         }
 
         function goBack() {
-            document.body.classList.remove('mode-grid');
-            document.body.classList.add('mode-landing');
+            document.body.className = 'mode-landing';
             document.getElementById('grid-view').style.display = 'none';
             document.getElementById('landing-view').style.display = 'flex';
         }
 
         function renderSection(mainContainer, titleText, dataString) {
             if (!dataString) return;
-
             const h1 = document.createElement('h1');
             h1.className = 'main-title';
             h1.innerText = titleText;
             mainContainer.appendChild(h1);
-
             dataString.split(';').forEach(group => {
                 const parts = group.split('|');
                 const subTitle = parts.length > 1 ? parts[0] : ''; 
                 const colors = parts.length > 1 ? parts[1] : parts[0];
-
                 const wrap = document.createElement('div');
                 wrap.className = 'subgroup-wrapper';
-                
-                let html = '';
-                if(subTitle) html += `<h3 class="sub-title">${subTitle}</h3>`;
+                let html = subTitle ? `<h3 class="sub-title">${subTitle}</h3>` : '';
                 html += `<div class="color-flex-grid">`;
-                
                 colors.split(',').forEach(c => {
                     const [hex, name] = c.split(':');
-                    html += `<div class="color-item" style="--bg-color: ${hex}; background-color: ${hex};" data-hex="${hex}" data-name="${name}"></div>`;
+                    html += `<div class="color-item" style="background-color: ${hex};" data-hex="${hex}" data-name="${name}"></div>`;
                 });
                 html += `</div>`;
-                
                 wrap.innerHTML = html;
                 mainContainer.appendChild(wrap);
             });
