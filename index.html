@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TONO APROBADO | Colorimetría Profesional</title>
+    <title>TONO APROBADO | Expertos en Colorimetría</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* --- VARIABLES & RESET --- */
         :root {
-            --bg-landing: #0f0f0f;
-            --text-landing: #f5f5f5;
-            --bg-grid: #ffffff;
-            --text-grid: #111111;
+            --bg-dark: #0f0f0f;
+            --text-dark: #f5f5f5;
+            --bg-light: #ffffff;
+            --text-light: #1a1a1a;
             --accent: #0047FF;
-            --border-light: #e5e5e5;
-            --border-dark: #333;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -25,29 +23,31 @@
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
-            transition: background-color 0.4s ease;
-            background-color: var(--bg-landing);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
         }
 
-        body.mode-landing { background-color: var(--bg-landing); overflow-x: hidden; }
-        body.mode-grid { background-color: var(--bg-grid); color: var(--text-grid); }
+        body.mode-landing { background-color: var(--bg-dark); color: var(--text-dark); }
+        body.mode-grid { background-color: var(--bg-light); color: var(--text-light); }
 
-        /* --- VISTA 1: LANDING CENTRADA --- */
+        /* --- VISTA 1: LANDING --- */
         #landing-view {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 60px 20px;
-            animation: fadeIn 0.8s ease-out;
+            justify-content: center;
+            padding: 40px 20px;
         }
 
-        header.landing-header { text-align: center; margin-bottom: 60px; }
+        header.landing-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
         h1.brand-title {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(3.5rem, 15vw, 7rem);
-            color: var(--text-landing);
+            font-size: clamp(3rem, 12vw, 6rem);
             text-transform: uppercase;
             line-height: 0.85;
             margin: 0;
@@ -56,154 +56,158 @@
 
         .brand-subtitle {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(0.7rem, 3vw, 1.1rem);
-            letter-spacing: 8px;
-            color: #666;
+            font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+            letter-spacing: 5px;
+            color: #888;
             margin-top: 15px;
             text-transform: uppercase;
         }
 
-        .seasons-wrapper {
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-        }
-
-        .season-group {
-            width: 100%;
-            text-align: center; /* CENTRADO DE TEXTO */
-        }
-
-        .season-name {
-            font-family: 'Syne', sans-serif;
-            color: var(--text-landing);
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            position: relative;
-            display: inline-block;
-        }
-        .season-name::after {
-            content: ""; position: absolute; bottom: -10px; left: 20%; right: 20%;
-            height: 1px; background: var(--accent);
-        }
-
-        .buttons-grid {
-            display: flex; /* CAMBIO A FLEX PARA CENTRADO PERFECTO */
-            flex-wrap: wrap;
-            justify-content: center;
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 15px;
-            margin-top: 10px;
+            width: 100%;
+            max-width: 1100px;
         }
 
         .menu-btn {
             background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border-dark);
-            color: var(--text-landing);
-            padding: 20px 30px;
-            min-width: 160px;
+            border: 1px solid #333;
+            color: white;
+            padding: 25px 15px;
             font-family: 'Syne', sans-serif;
             font-size: 0.9rem;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-            border-radius: 2px;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
         }
 
         .menu-btn:hover {
-            background: var(--text-landing);
-            color: var(--bg-landing);
-            border-color: var(--text-landing);
+            background: white;
+            color: black;
             transform: translateY(-5px);
         }
 
-        /* --- VISTA 2: GRID DETALLE --- */
+        /* --- VISTA 2: GRID DE COLORES --- */
         #grid-view {
             display: none;
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px 100px;
-            animation: slideUp 0.5s ease-out;
         }
 
         .grid-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 50px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 40px;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+            padding: 20px 0;
         }
 
         .back-btn {
-            background: none; border: 1px solid #000; color: #000; padding: 10px 25px;
-            border-radius: 50px; cursor: pointer; font-family: 'Inter', sans-serif;
-            font-weight: 600; font-size: 0.85rem; text-transform: uppercase;
+            background: #f0f0f0;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: 0.3s;
         }
+        .back-btn:hover { background: #000; color: #fff; }
 
         .season-title {
-            font-family: 'Syne', sans-serif; font-size: clamp(1.5rem, 4vw, 2.5rem);
-            font-weight: 800; text-transform: uppercase; color: #000; margin: 0;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
         }
 
         .main-title {
-            font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 1px; margin: 60px 0 25px;
-            color: var(--accent); display: flex; align-items: center;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin: 50px 0 25px;
+            display: flex;
+            align-items: center;
         }
-        .main-title::after { content: ""; flex: 1; height: 1px; background: var(--border-light); margin-left: 20px; }
+        .main-title::after { content: ""; flex: 1; height: 1px; background: #ddd; margin-left: 20px; }
 
-        .sub-title { font-size: 0.85rem; color: #888; margin: 0 0 15px; font-weight: 600; text-transform: uppercase; }
-        
+        .sub-title { 
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem; 
+            color: #666; 
+            margin-bottom: 15px; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
         .subgroup-wrapper { margin-bottom: 40px; }
-        ./* Agrega width: 100% para evitar que el contenedor se colapse */
-.color-flex-grid { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 15px; 
-    width: 100%; 
-}
 
-/* Asegura que el item tenga dimensiones mínimas */
-.color-item {
-    width: calc(16.66% - 13px);
-    aspect-ratio: 1;
-    border-radius: 8px;
-    cursor: pointer;
-    background-color: #ccc; /* Color de respaldo por si el hex falla */
-    transition: transform 0.2s ease;
-}
+        .color-flex-grid { 
+            display: grid; 
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px; 
+        }
 
         .color-item {
-            width: calc(16.66% - 13px); aspect-ratio: 1; border-radius: 8px;
-            cursor: pointer; transition: transform 0.2s ease;
-            border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            aspect-ratio: 1;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            background-color: var(--bg-color);
+            border: 1px solid rgba(0,0,0,0.05);
         }
-        .color-item:hover { transform: scale(1.15); z-index: 10; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .color-item:hover { transform: scale(1.05); z-index: 2; }
 
-        .season-description {
-            font-size: 1.1rem; line-height: 1.6; color: #333; margin: 60px 0 20px;
-            padding: 30px; background: #f4f4f4; border-left: 4px solid #1a1a1a; font-family: 'Syne', sans-serif;
+        @media (max-width: 600px) {
+            .color-flex-grid { grid-template-columns: repeat(4, 1fr); }
+            h1.brand-title { letter-spacing: -1px; }
+            .season-title { font-size: 1.2rem; }
         }
 
         /* --- VISOR MODAL --- */
-        .viewer { position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; z-index: 9999; display: none; flex-direction: column; }
+        .viewer {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100dvh;
+            z-index: 9999; display: none; flex-direction: column;
+        }
         .viewer.active { display: flex; }
-        .viewer-bg { position: absolute; inset: 0; }
-        .close-viewer { position: absolute; top: 30px; right: 30px; background: white; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; z-index: 1001; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .viewer-footer { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); background: white; padding: 20px 40px; border-radius: 50px; text-align: center; min-width: 260px; z-index: 1001; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
-        .viewer-footer strong { display: block; font-size: 18px; color: black; font-family: 'Syne', sans-serif; }
-        .viewer-footer span { font-size: 14px; color: #888; font-family: 'Inter', sans-serif; }
+        .viewer-bg { position: absolute; inset: 0; transition: background 0.3s ease; }
+        .close-viewer {
+            position: absolute; top: 25px; right: 25px; background: white; border: none;
+            width: 45px; height: 45px; border-radius: 50%; cursor: pointer; z-index: 1001;
+            display: flex; align-items: center; justify-content: center; font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .viewer-footer {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            background: white; padding: 20px 35px; border-radius: 15px; text-align: center;
+            min-width: 250px; z-index: 1001; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .viewer-footer strong { display: block; font-size: 1.1rem; color: #000; margin-bottom: 5px; }
+        .viewer-footer span { font-size: 0.9rem; color: #666; font-family: monospace; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media (max-width: 600px) {
-            .color-item { width: calc(25% - 12px); }
-            .menu-btn { width: 100%; }
+        .season-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            padding: 30px;
+            background: #f9f9f9;
+            border-left: 5px solid #000;
+            font-family: 'Inter', sans-serif;
+            margin-top: 60px;
         }
     </style>
 </head>
@@ -212,47 +216,22 @@
     <section id="landing-view">
         <header class="landing-header">
             <h1 class="brand-title">TONO<br>APROBADO</h1>
-            <div class="brand-subtitle">Selecciona tu Estación</div>
+            <div class="brand-subtitle">Guía Profesional de Color</div>
         </header>
 
-        <div class="seasons-wrapper">
-            
-            <div class="season-group">
-                <div class="season-name">Primavera</div>
-                <div class="buttons-grid">
-                    <button class="menu-btn" onclick="loadSeason('primavera_calida')">Cálida</button>
-                    <button class="menu-btn" onclick="loadSeason('primavera_brillante')">Brillante</button>
-                    <button class="menu-btn" onclick="loadSeason('primavera_clara')">Clara</button>
-                </div>
-            </div>
-
-            <div class="season-group">
-                <div class="season-name">Verano</div>
-                <div class="buttons-grid">
-                    <button class="menu-btn" onclick="loadSeason('verano_claro')">Claro</button>
-                    <button class="menu-btn" onclick="loadSeason('verano_suave')">Suave</button>
-                    <button class="menu-btn" onclick="loadSeason('verano_frio')">Frío</button>
-                </div>
-            </div>
-
-            <div class="season-group">
-                <div class="season-name">Otoño</div>
-                <div class="buttons-grid">
-                    <button class="menu-btn" onclick="loadSeason('otono_calido')">Cálido</button>
-                    <button class="menu-btn" onclick="loadSeason('otono_suave')">Suave</button>
-                    <button class="menu-btn" onclick="loadSeason('otono_fuerte')">Fuerte</button>
-                </div>
-            </div>
-
-            <div class="season-group">
-                <div class="season-name">Invierno</div>
-                <div class="buttons-grid">
-                    <button class="menu-btn" onclick="loadSeason('invierno_brillante')">Brillante</button>
-                    <button class="menu-btn" onclick="loadSeason('invierno_profundo')">Profundo</button>
-                    <button class="menu-btn" onclick="loadSeason('invierno_frio')">Frío</button>
-                </div>
-            </div>
-            
+        <div class="menu-grid">
+            <button class="menu-btn" onclick="loadSeason('invierno_brillante')">Invierno Brillante</button>
+            <button class="menu-btn" onclick="loadSeason('invierno_profundo')">Invierno Profundo</button>
+            <button class="menu-btn" onclick="loadSeason('invierno_frio')">Invierno Frío</button>
+            <button class="menu-btn" onclick="loadSeason('otono_calido')">Otoño Cálido</button>
+            <button class="menu-btn" onclick="loadSeason('otono_suave')">Otoño Suave</button>
+            <button class="menu-btn" onclick="loadSeason('otono_fuerte')">Otoño Fuerte</button>
+            <button class="menu-btn" onclick="loadSeason('primavera_brillante')">Prim. Brillante</button>
+            <button class="menu-btn" onclick="loadSeason('primavera_calida')">Prim. Cálida</button>
+            <button class="menu-btn" onclick="loadSeason('primavera_luz')">Prim. Luz</button>
+            <button class="menu-btn" onclick="loadSeason('verano_frio')">Verano Frío</button>
+            <button class="menu-btn" onclick="loadSeason('verano_suave')">Verano Suave</button>
+            <button class="menu-btn" onclick="loadSeason('verano_luz')">Verano Luz</button>
         </div>
     </section>
 
@@ -275,131 +254,167 @@
 
     <script>
         const colorData = {
-            // --- VERANO ---
-            'verano_claro': {
-                title: "Verano Claro",
-                star: "Neutros claros fríos|#F5F5F7:Soft Cool White,#E6E6EA:Light Cool Gray,#C8CAD4:Pale Cool Gray,#A8BACD:Light Blue Gray;Rosas suaves fríos|#FFD1E3:Soft Cool Pink,#EED3E3:Powder Rose,#FDE8F5:Light Blush,#D96A8A:Soft Cool Raspberry;Lilacs y violetas claros|#EFE6F7:Soft Lilac,#CFC6EA:Light Lavender,#C6CAEB:Light Periwinkle,#8E7FB8:Soft Violet;Azules claros fríos|#C7D6E6:Pale Blue Gray,#6F8EC1:Light Cool Blue,#CDECF4:Powder Aqua,#B9DDEA:Soft Sky Blue;Verdes fríos suaves|#D4EFE9:Light Aqua Green,#B6E0DA:Cool Mint,#8ECFBC:Soft Teal,#3C9A98:Light Blue Green",
-                comp: "Complementarios|#F5F5F7:Soft Cool White,#E6E6EA:Light Cool Gray,#D5D7DF:Pearl Gray,#C8CAD4:Pale Cool Gray,#A8BACD:Blue Gray,#FFF1B8:Cool Light Yellow,#FFECA8:Light Lemon,#FFD1E3:Soft Pink,#F0D8E8:Powder Rose,#FDE8F5:Light Blush,#E6C6DA:Soft Mauve,#D7B4CE:Cool Mauve Pink,#EFE6F7:Soft Lilac,#EADDF3:Light Lilac,#CFC6EA:Lavender Light,#C6CAEB:Periwinkle,#B8C0E6:Cool Pastel Blue,#CDECF4:Powder Aqua,#B9DDEA:Sky Blue,#AFCFE0:Misty Blue,#D4EFE9:Aqua Green Light,#B6E0DA:Cool Mint,#9FD3C9:Soft Aqua,#8ECFBC:Light Teal,#7FBEB5:Muted Aqua,#E9EFF3:Ice Blue Gray,#D7E4EE:Icy Blue,#C9D9E4:Cool Fog Blue,#BFD0DC:Cool Mist,#F2F2F4:Icy Neutral",
-                avoid: "Cálidos / Amarillentos|#FF8C00:Orange,#FFD634:Warm Yellow,#C1672F:Camel;Oscuros / Pesados|#000000:Black,#1A1A1A:Ink Black;Muy saturados|#FF0000:True Red,#EB19B3:Hot Fuchsia,#00FF00:Neon Green",
-                metal: "Recomendados|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#A9A9A9:Soft Pewter;Evitar|#FFD700:Yellow Gold,#B87333:Copper,#CD7F32:Bronze,#B76E79:Rose Gold",
-                desc: "Colores claros, fríos y delicados iluminan tu imagen natural. Cuando el color es liviano y fresco, tu presencia se ve etérea y armónica."
+            'invierno_brillante': {
+                title: "Invierno Brillante",
+                star: "Neutros|#000000:Black,#1A1A1A:Ink Black,#2B2B2B:Jet Gray,#FCFCFD:Icy White;Azules|#235AE7:Bright Royal Blue,#0079AD:Cold Blue,#00A7D1:Electric Cyan,#293885:Bright Navy;Rojos y Rosas|#E90137:True Cold Red,#BD002C:Crimson,#E63789:Bright Fuchsia,#BB1B81:Hot Pink",
+                comp: "Vibrantes|#C800FF:Neon Purple,#00FFD5:Neon Aqua,#00FF6A:Bright Green,#780D61:Berry,#FFE70F:Icy Lemon",
+                avoid: "Cálidos y Apagados|#FEEE86:Warm Yellow,#C19A6B:Camel,#8B4513:Brown,#808000:Olive",
+                metal: "Joyería|#C0C0C0:Plata,#EAEAEA:Oro Blanco,#D8D8D8:Acero",
+                finalDescription: "Tus colores son fríos, limpios y altamente contrastados. Evita tonos terrosos o pasteles lavados."
             },
-            'verano_suave': {
-                title: "Verano Suave",
-                star: "Neutros fríos suaves|#E3E8EC:Soft Cool White,#C4C6CC:Cool Soft Gray,#8A8A8F:Muted Cool Gray,#CFD2E3:Soft Blue Gray;Rosas empolvados|#EFE1E2:Powder Blush,#E3A9BC:Soft Dusty Rose,#C36581:Muted Rose,#C85C7A:Soft Cool Raspberry;Malvas y violetas suaves|#E0C9DC:Soft Mauve,#BFB9D4:Dusty Lilac,#A68EBE:Muted Lavender,#7A5C97:Soft Plum;Azules fríos apagados|#D3DEEA:Powder Blue,#7F92AA:Soft Denim,#5F93AA:Muted Blue,#44495F:Cool Soft Navy;Verdes fríos grisados|#C2DEDE:Soft Aqua,#A8BEB7:Sage Green,#4E7472:Muted Teal,#2F5752:Soft Deep Green",
-                comp: "Complementarios|#E3E8EC:Soft Cool White,#D3D7DE:Cool Mist Gray,#C4C6CC:Soft Gray,#AFAFB5:Muted Cool Gray,#8A8A8F:Medium Cool Gray,#EEE3AA:Soft Cool Yellow,#D8C7B6:Muted Oat,#EFE1E2:Powder Blush,#E3A9BC:Soft Rose,#C36581:Rose Dust,#B26A8B:Muted Berry,#E0C9DC:Soft Mauve,#DABED7:Mauve Gray,#BFB9D4:Lilac Gray,#A68EBE:Muted Lavender,#9B87B4:Soft Violet,#D3DEEA:Powder Blue,#CBDDEC:Soft Blue Gray,#7F92AA:Denim Soft,#5F93AA:Muted Blue,#C2DEDE:Aqua Soft,#AED5D5:Cool Aqua,#A8BEB7:Sage,#8FA9A3:Muted Sage,#6E8F8B:Cool Moss,#4E7472:Muted Teal,#3E6564:Soft Teal,#2F5752:Deep Soft Green,#B7BFD0:Cool Fog,#E9EDF1:Icy Neutral",
-                avoid: "Cálidos / Dorados|#FF8C00:Orange,#FFD634:Warm Yellow,#C1672F:Camel;Muy oscuros|#000000:Black,#1A1A1A:Ink Black;Muy saturados|#FF0000:True Red,#EB19B3:Hot Fuchsia,#00FF00:Neon Green",
-                metal: "Recomendados|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#A9A9A9:Soft Pewter;Evitar|#FFD700:Yellow Gold,#B87333:Copper,#CD7F32:Bronze,#B76E79:Rose Gold",
-                desc: "Los colores suaves, fríos y empolvados acompañan tu elegancia natural. Cuando el color es bajo en contraste y delicado, tu imagen se ve serena y sofisticada."
+            'invierno_profundo': {
+                title: "Invierno Profundo",
+                star: "Oscuros|#000000:Black,#1A1A1A:Ink Black,#1F2A44:Deep Navy,#232323:Jet Black;Vinos y Verdes|#66001A:Oxblood,#5C1445:Plum,#02585A:Teal,#0A5F4A:Emerald",
+                comp: "Intensos|#C10114:True Red,#9125AD:Violet,#525252:Charcoal,#003366:Prussian Blue",
+                avoid: "Cálidos Claros|#FFE4B5:Peach,#F5DEB3:Wheat,#D2B48C:Tan",
+                metal: "Joyería|#C0C0C0:Plata,#EAEAEA:Oro Blanco,#D8D8D8:Peltre",
+                finalDescription: "La profundidad es tu mejor aliada. Colores oscuros y saturados realzan tu facciones."
+            },
+            'invierno_frio': {
+                title: "Invierno Frío",
+                star: "Azules Puros|#24469E:True Blue,#011B51:Navy,#003B8E:Cobalt,#FCFCFD:Icy White;Rosas y Púrpuras|#EB19B3:Fuchsia,#C41776:Raspberry,#5B3FA3:Violet",
+                comp: "Fríos|#808080:Gray,#00696B:Teal,#7A5DC7:Periwinkle,#4A5FA7:Cornflower",
+                avoid: "Naranjas y Dorados|#C21300:Warm Red,#FF6F3C:Orange,#FFD700:Gold",
+                metal: "Joyería|#C0C0C0:Plata,#EAEAEA:Oro Blanco,#E5E4E2:Platino",
+                finalDescription: "Busca siempre el subtono azul en tus colores. Nada de amarillos o naranjas en tu paleta."
+            },
+            'otono_calido': {
+                title: "Otoño Cálido",
+                star: "Terrosos|#4C1C06:Chocolate,#A8854D:Camel,#9D5439:Cinnamon,#7C852E:Olive;Cálidos|#ED7226:Orange,#E23D28:Rust,#DD9F3C:Gold",
+                comp: "Naturales|#165D69:Warm Teal,#B87333:Copper,#6B2E1A:Mahogany,#D2691E:Sienna",
+                avoid: "Fríos Extremos|#000000:Black,#FFFFFF:White,#235AE7:Royal Blue",
+                metal: "Joyería|#FFD700:Oro Amarillo,#B87333:Cobre,#CD7F32:Bronce",
+                finalDescription: "Tu piel brilla con colores que evocan la naturaleza en otoño: cálidos, ricos y dorados."
+            },
+            'otono_suave': {
+                title: "Otoño Suave",
+                star: "Neutros Suaves|#B6A081:Taupe,#9C8F7A:Stone,#FFF6E0:Cream;Apagados|#A9B573:Sage,#C46540:Clay,#D9B48F:Soft Camel",
+                comp: "Muted|#6F8F7A:Moss,#7CA5CB:Dusty Blue,#B97A6A:Dusty Rose,#67B2BC:Soft Teal",
+                avoid: "Colores Neón|#FF00FF:Magenta,#00FFFF:Cyan,#000000:Pure Black",
+                metal: "Joyería|#CFB53B:Oro Viejo,#B87333:Cobre Mate,#FFD700:Oro Suave",
+                finalDescription: "La elegancia está en la baja saturación. Evita contrastes fuertes y colores chillones."
+            },
+            'otono_fuerte': {
+                title: "Otoño Fuerte",
+                star: "Intensos|#511C06:Dark Cocoa,#24562A:Forest Green,#830C18:Oxblood;Tierra|#BD7951:Copper Tan,#C08D35:Mustard,#7A3A1D:Rust",
+                comp: "Profundos|#165D69:Deep Teal,#802359:Burgundy,#343D0A:Dark Olive",
+                avoid: "Pasteles|#FFEBF3:Icy Pink,#E6E6FA:Lavender,#D5F4F6:Icy Aqua",
+                metal: "Joyería|#FFD700:Oro Amarillo,#CD7F32:Bronce,#B87333:Cobre",
+                finalDescription: "Eres la versión más intensa del otoño. Colores oscuros y cálidos te dan fuerza."
+            },
+            'primavera_brillante': {
+                title: "Primavera Brillante",
+                star: "Luminosos|#FF0000:Tomato Red,#00FF00:Lime,#FFD700:Bright Gold;Vivos|#00CED1:Turquoise,#FF69B4:Hot Pink,#FFA500:Orange",
+                comp: "Claridad|#FFFFFF:Creamy White,#32CD32:Kelly Green,#1E90FF:Dodger Blue",
+                avoid: "Colores Opacos|#4A4A4A:Dull Gray,#2F4F4F:Dark Slate,#800000:Maroon",
+                metal: "Joyería|#FFD700:Oro Brillante,#EAEAEA:Oro Blanco",
+                finalDescription: "Colores vivos y brillantes. Tu paleta es alegre y llena de energía solar."
+            },
+            'primavera_calida': {
+                title: "Primavera Cálida",
+                star: "Cálidos Radiantes|#FF8C00:Dark Orange,#FFD700:Gold,#ADFF2F:Green Yellow;Vitalidad|#FF4500:Orange Red,#40E0D0:Turquoise,#DAA520:Goldenrod",
+                comp: "Cálidos|#F0E68C:Khaki,#D2691E:Chocolate,#FF7F50:Coral",
+                avoid: "Fríos Cenizos|#708090:Slate Gray,#191970:Midnight Blue,#C0C0C0:Silver",
+                metal: "Joyería|#FFD700:Oro Amarillo,#CFB53B:Oro Antiguo",
+                finalDescription: "Calidez pura. Evita cualquier color que se vea azulado o cenizo."
+            },
+            'primavera_luz': {
+                title: "Primavera Luz",
+                star: "Pasteles Cálidos|#FFB6C1:Light Pink,#FAFAD2:Light Gold,#E0FFFF:Light Cyan;Suaves|#98FB98:Pale Green,#FFA07A:Light Salmon,#B0E0E6:Powder Blue",
+                comp: "Delicados|#FFFACD:Lemon Chiffon,#FFDAB9:Peach Puff,#F08080:Light Coral",
+                avoid: "Colores Pesados|#000000:Black,#4B0082:Indigo,#1A1A1A:Dark Gray",
+                metal: "Joyería|#FFD700:Oro Claro,#B76E79:Oro Rosa",
+                finalDescription: "Tu paleta es etérea y luminosa. Los colores oscuros apagan tu brillo natural."
             },
             'verano_frio': {
                 title: "Verano Frío",
-                star: "Neutros fríos claros|#F2F2F2:Cool Soft White,#E1E1E6:Light Cool Gray,#9AA0B2:Cool Taupe Gray,#4A4E57:Soft Charcoal;Rosas fríos empolvados|#F6E6EF:Cool Blush,#EBC1D6:Powder Pink,#C98AAE:Dusty Rose,#B24C6F:Cool Raspberry;Lilacs y violetas fríos|#E2DAF2:Soft Lavender,#B9A9DE:Cool Lilac,#8A76B8:Muted Violet,#5E507F:Cool Plum;Azules fríos suaves|#D8E4F2:Powder Blue,#B7C6EA:Cool Periwinkle,#7FA9C9:Soft Denim Blue,#3B5B86:Cool Navy;Verdes fríos apagados|#C6D9DC:Blue Sage,#9CCFC2:Cool Mint,#7A9FA8:Muted Teal,#3C7F80:Cool Blue Green",
-                comp: "Complementarios|#F2F2F2:Soft Cool White,#E1E1E6:Light Cool Gray,#C7CBD6:Cool Pearl Gray,#9AA0B2:Taupe Gray,#BFC6D9:Blue Gray,#F6E6EF:Cool Blush,#EBC1D6:Powder Pink,#D9A1BF:Soft Rose,#C98AAE:Dusty Rose,#B24C6F:Cool Raspberry,#E2DAF2:Soft Lavender,#CFC4EA:Icy Lilac,#B9A9DE:Cool Lilac,#9A8BC7:Muted Violet,#8A76B8:Soft Violet,#D8E4F2:Powder Blue,#C4D3EB:Soft Sky Blue,#B7C6EA:Periwinkle,#9FB7D6:Misty Blue,#7FA9C9:Soft Denim,#C6D9DC:Blue Sage,#B1D2CF:Cool Aqua Gray,#9CCFC2:Cool Mint,#8BB9B4:Muted Aqua,#7A9FA8:Teal Gray,#DDE6E8:Ice Blue Gray,#CAD6DA:Cool Fog,#B5C3C8:Cool Stone,#A9B2C8:Cool Mist,#E6EBF0:Icy Neutral",
-                avoid: "Cálidos / Amarillentos|#FF8C00:Orange,#FFD634:Warm Yellow,#C19A6B:Camel;Muy oscuros|#000000:Pure Black,#1A1A1A:Ink Black;Muy saturados|#FF0000:True Red,#00FF00:Neon Green,#00A7D1:Electric Turquoise",
-                metal: "Recomendados|#C0C0C0:Silver,#EAEAEA:White Gold,#E5E4E2:Platinum,#A9A9A9:Rhodium;Evitar|#FFD700:Yellow Gold,#B87333:Copper,#CD7F32:Bronze,#B76E79:Rose Gold",
-                desc: "Colores fríos, suaves y equilibrados acompañan tu elegancia natural. Cuando el color es delicado, frío y armonioso, tu imagen se ve refinada y serena."
+                star: "Azules Suaves|#4682B4:Steel Blue,#5F9EA0:Cadet Blue,#B0C4DE:Light Steel Blue;Rosas Fríos|#DB7093:Pale Violet Red,#FFB6C1:Light Pink,#C0C0C0:Silver",
+                comp: "Armonía|#6A5ACD:Slate Blue,#2F4F4F:Dark Slate Grey,#87CEEB:Sky Blue",
+                avoid: "Naranjas y Amarillos|#FFA500:Orange,#FFFF00:Yellow,#FF4500:Red Orange",
+                metal: "Joyería|#C0C0C0:Plata,#E5E4E2:Platino",
+                finalDescription: "Colores fríos y suavizados por una base azulada, pero sin el contraste del invierno."
             },
-
-            // --- OTROS DATOS (PRIMAVERA, OTOÑO, INVIERNO) ---
-            'primavera_calida': { title: "Primavera Cálida", star: "Neutros|#FFF9EB:Warm Ivory,#F2E4CE:Soft Warm Beige,#ECD0B6:Light Sand;Amarillos|#FED634:Sun Yellow,#F7C948:Warm Butter,#F2B705:Clear Warm Yellow;Naranjas|#FD8D5D:Soft Coral Orange,#E78646:Warm Apricot,#FFD9C2:Peach Cream;Verdes|#87A022:Warm Apple Green,#50A34D:Fresh Leaf Green,#A8C686:Warm Pistachio", comp: "Complementarios|#D9FCF6:Light Aqua,#BFE9E4:Soft Aqua Mint,#9DD7DD:Clear Aqua,#84E1CB:Fresh Mint,#029270:Warm Teal", avoid: "Fríos|#235AE7:Royal Blue,#0E3EAF:Electric Blue;Oscuros|#000000:Black,#343434:Charcoal", metal: "Recomendados|#FFD700:Gold,#F0E68C:Light Gold;Evitar|#C0C0C0:Silver", desc: "Los colores cálidos, claros y luminosos realzan tu frescura natural." },
-            'primavera_brillante': { title: "Primavera Brillante", star: "Neutros|#FFF6E0:Light Ivory,#F6E3C5:Bright Sand;Amarillos|#FFE45C:Bright Lemon,#FFE600:Sun Yellow;Azules|#84DDEB:Bright Aqua,#4FC8DE:Clear Turquoise;Rojos|#FF5E29:Orange Coral,#F11E2F:Warm Red", comp: "Complementarios|#E2FDF6:Mint Ice,#149FD2:Sky Blue,#B1FF85:Lime", avoid: "Fríos|#235AE7:Royal Blue;Oscuros|#000000:Black", metal: "Recomendados|#FFD700:Gold;Evitar|#C0C0C0:Silver", desc: "Colores brillantes, cálidos y limpios reflejan tu energía natural." },
-            'primavera_clara': { title: "Primavera Clara", star: "Neutros|#FFF6E0:Light Ivory,#F2E1C8:Light Beige;Azules|#AEE8EF:Light Aqua,#8BBCE4:Soft Sky Blue;Verdes|#9FF4D5:Fresh Mint,#C9E49B:Soft Lime;Rosas|#FF9D94:Soft Coral,#F3A6A0:Warm Rose", comp: "Complementarios|#DBFFF4:Mint Ice,#F8E077:Sun Yellow", avoid: "Fríos|#0E3EAF:Electric Blue;Oscuros|#000000:Black", metal: "Recomendados|#F7E7CE:Champagne Gold;Evitar|#C0C0C0:Silver", desc: "Colores claros, cálidos y luminosos acompañan tu frescura natural." },
-            'otono_calido': { title: "Otoño Cálido", star: "Cafés|#4C1C06:Chocolate,#5A3A1A:Espresso;Dorados|#DD9F3C:Deep Gold,#F2C673:Honey;Naranjas|#ED7226:Burnt Orange,#C84D37:Rust;Verdes|#7C852E:Olive,#2F3805:Deep Olive", comp: "Complementarios|#F3CBA5:Peach,#165D69:Warm Teal", avoid: "Fríos|#2299B4:Cool Blue;Contraste|#000000:Black", metal: "Recomendados|#FFD700:Gold,#CD7F32:Bronze;Evitar|#C0C0C0:Silver", desc: "Los colores cálidos, terrosos y dorados armonizan con tu piel." },
-            'otono_suave': { title: "Otoño Suave", star: "Neutros|#FFF6E0:Soft Cream,#B6A081:Warm Taupe;Dorados|#F0C775:Soft Gold;Verdes|#A9B573:Light Olive,#748952:Muted Olive;Rojos|#C26A5A:Soft Terracotta", comp: "Complementarios|#A5D9C9:Soft Aqua,#6E8FA8:Dusty Blue", avoid: "Intensos|#FF0000:True Red;Fríos|#000000:Black", metal: "Recomendados|#CFB53B:Antique Gold;Evitar|#C0C0C0:Silver", desc: "Los colores cálidos, suaves y apagados armonizan con tu delicadeza." },
-            'otono_fuerte': { title: "Otoño Fuerte", star: "Cafés|#511C06:Dark Chocolate;Dorados|#DD9F3C:Antique Gold;Rojos|#830C18:Warm Oxblood;Verdes|#24562A:Forest Green", comp: "Complementarios|#2B7866:Warm Teal,#AFDC8F:Soft Green", avoid: "Fríos|#229DBF:Cool Blue;Pasteles|#E6E6FA:Lavender", metal: "Recomendados|#FFD700:Gold,#B87333:Copper;Evitar|#C0C0C0:Silver", desc: "Colores cálidos, profundos y terrosos acompañan tu intensidad." },
-            'invierno_brillante': { title: "Invierno Brillante", star: "Neutros|#000000:Black,#FCFCFD:Icy White;Azules|#235AE7:Bright Royal Blue;Rojos|#E90137:True Cold Red,#E63789:Bright Fuchsia;Amarillos|#F5FF00:Neon Icy Yellow", comp: "Complementarios|#00FFD5:Neon Aqua,#C800FF:Neon Purple", avoid: "Cálidos|#FEEE86:Warm Yellow,#8B4513:Brown", metal: "Recomendados|#C0C0C0:Silver;Evitar|#FFD700:Gold", desc: "Colores fríos, brillantes y de alto contraste potencian tu energía." },
-            'invierno_profundo': { title: "Invierno Profundo", star: "Neutros|#000000:Black,#1F2A44:Deep Navy;Verdes|#02585A:Deep Teal;Rojos|#C10114:Cold Red,#923551:Burgundy;Púrpuras|#52336C:Royal Purple", comp: "Complementarios|#003153:Dark Sapphire,#66001A:Oxblood", avoid: "Cálidos|#FFE100:Warm Yellow,#C19A6B:Camel", metal: "Recomendados|#C0C0C0:Silver;Evitar|#FFD700:Gold", desc: "Colores profundos, fríos e intensos reflejan tu fuerza natural." },
-            'invierno_frio': { title: "Invierno Frío", star: "Neutros|#000000:Black,#FCFCFD:Icy White;Azules|#003366:Prussian Blue,#24469E:True Cold Blue;Rojos|#C41776:Cool Raspberry,#EB19B3:Cool Fuchsia", comp: "Complementarios|#1F4E79:Blue Steel,#6B6FD6:Blue Violet", avoid: "Cálidos|#F7F592:Warm Yellow,#C19A6B:Camel", metal: "Recomendados|#C0C0C0:Silver;Evitar|#FFD700:Gold", desc: "Los colores fríos, puros y equilibrados armonizan con tu piel." }
+            'verano_suave': {
+                title: "Verano Suave",
+                star: "Neutros Fríos|#8E9294:Cool Gray,#A9AFB2:Soft Silver,#D1D5D8:Light Gray;Muted|#778899:Light Slate Gray,#BDB76B:Dark Khaki,#BC8F8F:Rosy Brown",
+                comp: "Sutiles|#483D8B:Dark Slate Blue,#8FBC8F:Dark Sea Green,#4682B4:Steel Blue",
+                avoid: "Colores Eléctricos|#00FF00:Electric Green,#FF00FF:Magenta,#FFA500:Bright Orange",
+                metal: "Joyería|#C0C0C0:Plata Mate,#D8D8D8:Acero",
+                finalDescription: "Colores aterciopelados y de bajo contraste. La suavidad es tu mejor atributo."
+            },
+            'verano_luz': {
+                title: "Verano Luz",
+                star: "Pasteles Fríos|#F0F8FF:Alice Blue,#E6E6FA:Lavender,#FFF0F5:Lavender Blush;Luz|#B0E0E6:Powder Blue,#ADD8E6:Light Blue,#FFC0CB:Pink",
+                comp: "Claridad|#F5F5F5:White Smoke,#DCDCDC:Gainsboro,#B0C4DE:Light Steel Blue",
+                avoid: "Colores Tierra|#8B4513:Saddle Brown,#556B2F:Dark Olive,#D2691E:Chocolate",
+                metal: "Joyería|#C0C0C0:Plata,#B76E79:Oro Rosa Frío",
+                finalDescription: "Tonos claros, frescos y delicados. Evita colores saturados o muy oscuros."
+            }
         };
 
+        // --- NAVEGACIÓN ---
         function loadSeason(key) {
             const data = colorData[key];
             if (!data) return;
-            document.body.className = 'mode-grid';
+
+            document.body.classList.replace('mode-landing', 'mode-grid');
             document.getElementById('landing-view').style.display = 'none';
             document.getElementById('grid-view').style.display = 'block';
+
             document.getElementById('current-season-title').innerText = data.title;
             const container = document.getElementById('dynamic-content');
             container.innerHTML = '';
+
             renderSection(container, "⭐ Colores Estrella", data.star);
-            renderSection(container, "🎨 Complementarios", data.comp);
+            renderSection(container, "🎨 Complementarios", "Variedad|" + data.comp);
             renderSection(container, "🚫 A Evitar", data.avoid);
-            renderSection(container, "💎 Joyería y Metales", data.metal);
-            if (data.desc) {
-                const finalDesc = document.createElement('p');
-                finalDesc.className = 'season-description';
-                finalDesc.innerText = data.desc;
-                container.appendChild(finalDesc);
+            renderSection(container, "💎 Metales", data.metal);
+
+            if (data.finalDescription) {
+                const desc = document.createElement('div');
+                desc.className = 'season-description';
+                desc.innerText = data.finalDescription;
+                container.appendChild(desc);
             }
             window.scrollTo(0,0);
         }
 
         function goBack() {
-            document.body.className = 'mode-landing';
+            document.body.classList.replace('mode-grid', 'mode-landing');
             document.getElementById('grid-view').style.display = 'none';
             document.getElementById('landing-view').style.display = 'flex';
         }
 
-function renderSection(mainContainer, titleText, dataString) {
-    if (!dataString || dataString.trim() === "") return;
+        function renderSection(container, title, dataString) {
+            if (!dataString) return;
+            
+            const h1 = document.createElement('h1');
+            h1.className = 'main-title';
+            h1.innerText = title;
+            container.appendChild(h1);
 
-    // Crear el título de la sección (ej: ⭐ Colores Estrella)
-    const sectionTitle = document.createElement('h1');
-    sectionTitle.className = 'main-title';
-    sectionTitle.innerText = titleText;
-    mainContainer.appendChild(sectionTitle);
-
-    // Separar por grupos (punto y coma)
-    dataString.split(';').forEach(group => {
-        const trimmedGroup = group.trim();
-        if (!trimmedGroup) return; // Saltar si el grupo está vacío
-
-        const parts = trimmedGroup.split('|');
-        // Si hay un '|', el primero es el subtítulo, el segundo los colores. 
-        // Si no hay, todo es colores.
-        const subTitle = parts.length > 1 ? parts[0].trim() : ''; 
-        const colorsPart = parts.length > 1 ? parts[1].trim() : parts[0].trim();
-
-        const wrap = document.createElement('div');
-        wrap.className = 'subgroup-wrapper';
-
-        let html = subTitle ? `<h3 class="sub-title">${subTitle}</h3>` : '';
-        html += `<div class="color-flex-grid">`;
-
-        // Separar cada color por coma
-        colorsPart.split(',').forEach(c => {
-            const item = c.trim();
-            if (!item) return;
-
-            // Separar HEX de NOMBRE por dos puntos
-            const [hex, name] = item.split(':');
-            const cleanHex = hex ? hex.trim() : '';
-            const cleanName = name ? name.trim() : 'Color';
-
-            // Solo agregar si el hex parece válido (empieza con #)
-            if (cleanHex.startsWith('#')) {
-                html += `<div class="color-item" 
-                             style="background-color: ${cleanHex};" 
-                             data-hex="${cleanHex}" 
-                             data-name="${cleanName}">
-                         </div>`;
-            }
-        });
-
-        html += `</div>`;
-        wrap.innerHTML = html;
-        mainContainer.appendChild(wrap);
-    });
-}
+            dataString.split(';').forEach(group => {
+                const [subTitle, colors] = group.includes('|') ? group.split('|') : ['', group];
+                const wrap = document.createElement('div');
+                wrap.className = 'subgroup-wrapper';
+                
+                let html = subTitle ? `<h3 class="sub-title">${subTitle}</h3>` : '';
+                html += `<div class="color-flex-grid">`;
+                colors.split(',').forEach(c => {
+                    const [hex, name] = c.split(':');
+                    html += `<div class="color-item" style="--bg-color: ${hex}" data-hex="${hex}" data-name="${name}"></div>`;
+                });
+                html += `</div>`;
+                wrap.innerHTML = html;
+                container.appendChild(wrap);
             });
         }
 
+        // --- LÓGICA DEL VISOR ---
         const viewer = document.getElementById("viewer");
         const bg = document.getElementById("viewerBg");
         const nameEl = document.getElementById("viewerName");
         const hexEl = document.getElementById("viewerHex");
-        const closeBtn = document.getElementById("closeViewerBtn");
         let sectionColors = [];
         let currentIndex = 0;
 
@@ -409,36 +424,35 @@ function renderSection(mainContainer, titleText, dataString) {
                 const grid = item.closest(".color-flex-grid");
                 sectionColors = Array.from(grid.querySelectorAll(".color-item"));
                 currentIndex = sectionColors.indexOf(item);
-                updateViewer(currentIndex);
+                updateViewer();
                 viewer.classList.add("active");
                 document.body.style.overflow = "hidden";
             }
         });
 
-        function updateViewer(index) {
-            const item = sectionColors[index];
-            if(!item) return;
+        function updateViewer() {
+            const item = sectionColors[currentIndex];
             bg.style.backgroundColor = item.dataset.hex;
             nameEl.textContent = item.dataset.name;
             hexEl.textContent = item.dataset.hex;
         }
 
-        closeBtn.addEventListener("click", () => {
+        document.getElementById("closeViewerBtn").onclick = () => {
             viewer.classList.remove("active");
             document.body.style.overflow = "";
-        });
+        };
 
-        let startX = 0;
-        viewer.addEventListener("touchstart", e => startX = e.touches[0].clientX);
-        viewer.addEventListener("touchend", e => {
-            const endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
-            if (Math.abs(diff) > 50) {
+        // Swipe para móvil
+        let touchStartX = 0;
+        viewer.ontouchstart = e => touchStartX = e.touches[0].clientX;
+        viewer.ontouchend = e => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 60) {
                 if (diff > 0) currentIndex = (currentIndex + 1) % sectionColors.length;
                 else currentIndex = (currentIndex - 1 + sectionColors.length) % sectionColors.length;
-                updateViewer(currentIndex);
+                updateViewer();
             }
-        });
+        };
     </script>
 </body>
 </html>
